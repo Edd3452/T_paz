@@ -41,6 +41,34 @@ st.write("### Mapa de Territorios de Paz")
 # Initialize Folium map
 m = folium.Map(location=[19.4326, -99.1332], zoom_start=10, tiles="CartoDB positron", control_scale=True)
 
+# Add 09mun base layer
+mun_shp_path = os.path.join(".", "09mun.shp")
+if os.path.exists(mun_shp_path):
+    try:
+        mun_gdf = gpd.read_file(mun_shp_path)
+        if mun_gdf.crs is None and not mun_gdf.empty:
+            x_min = mun_gdf.total_bounds[0]
+            if x_min < -180 or x_min > 180:
+                mun_gdf.set_crs(epsg=32614, inplace=True)
+            else:
+                mun_gdf.set_crs(epsg=4326, inplace=True)
+        if mun_gdf.crs and mun_gdf.crs.to_string() != "EPSG:4326":
+            mun_gdf = mun_gdf.to_crs(epsg=4326)
+            
+        folium.GeoJson(
+            mun_gdf,
+            name="Límites Municipales",
+            style_function=lambda x: {
+                'color': '#333333',
+                'weight': 1.5,
+                'fillOpacity': 0,
+                'dashArray': '5, 5'
+            },
+            tooltip="Límite Municipal"
+        ).add_to(m)
+    except Exception as e:
+        print(f"Error loading 09mun.shp: {e}")
+
 # Mapping of dataset names to actual .shp filenames
 shapefile_mapping = {
     "Barrio norte": "Barrio norte.shp",
