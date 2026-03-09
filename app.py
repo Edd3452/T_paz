@@ -73,7 +73,7 @@ shapefile_mapping = {
     "Barrio norte": "Barrio norte.shp",
     "Lomas de Becerra": "Lomas becerra.shp",
     "San Pedro Xalpa": "San Pedro Xalpa.shp",
-    "Pedregal de Santo Domingo": None,  # Shapefile overlaps/is wrong, reverting to point
+    "Pedregal de Santo Domingo": "Pedregal de Santo Domingo.shp",
     "San Mateo Tlaltenango": "San Mateo Tlaltenango.shp",
     "Colonia Obrera": "Colonia Obrera.shp",
     "Colonia Morelos": "Colonia Morelos.shp",
