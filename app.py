@@ -98,7 +98,7 @@ shapefile_mapping = {
 T_PAZ_DIR = "."
 
 @st.cache_data
-def load_and_process_shapefile(filepath):
+def load_and_process_shapefile(filepath, mtime=None):
     try:
         gdf = gpd.read_file(filepath)
         if gdf.crs is None and not gdf.empty:
@@ -126,7 +126,8 @@ for idx, row in df.iterrows():
     shp_file = shapefile_mapping.get(name)
     
     if shp_file and os.path.exists(os.path.join(T_PAZ_DIR, shp_file)):
-        gdf = load_and_process_shapefile(os.path.join(T_PAZ_DIR, shp_file))
+        shp_path = os.path.join(T_PAZ_DIR, shp_file)
+        gdf = load_and_process_shapefile(shp_path, mtime=os.path.getmtime(shp_path))
         if gdf is not None and not gdf.empty:
             layer_color = colors[idx % len(colors)]
             
