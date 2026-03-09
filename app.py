@@ -30,14 +30,15 @@ st.markdown('''
 google_sheet_url = "https://docs.google.com/spreadsheets/d/1RdV79i1ifRCt_r3j8zEDqt71ItqNRO39MpB1fKA8uZY/export?format=csv&gid=0"
 try:
     df = pd.read_csv(google_sheet_url)
-    st.write("### Datos Demográficos y Socioeconómicos")
-    st.dataframe(df.style.set_properties(**{'background-color': '#FAFBF5', 'color': 'black'}))
 except Exception as e:
     st.error(f"Error loading data from Google Sheets: {e}")
     st.stop()
 
-st.write("### Mapa de Territorios de Paz")
+col1, col2 = st.columns([1, 1])
 
+with col1:
+    st.write("### Datos Demográficos y Socioeconómicos")
+    st.dataframe(df.style.set_properties(**{'background-color': '#FAFBF5', 'color': 'black'}), height=600)
 # Initialize Folium map
 m = folium.Map(location=[19.4326, -99.1332], zoom_start=10, tiles="CartoDB positron", control_scale=True)
 
@@ -169,7 +170,9 @@ for idx, row in df.iterrows():
 
 folium.LayerControl().add_to(m)
 
-st_folium(m, width="100%", height=600, returned_objects=[])
+with col2:
+    st.write("### Mapa de Territorios de Paz")
+    st_folium(m, width="100%", height=600, returned_objects=[])
 
 st.markdown(
     """
