@@ -31,7 +31,7 @@ google_sheet_url = "https://docs.google.com/spreadsheets/d/1RdV79i1ifRCt_r3j8zED
 try:
     df = pd.read_csv(google_sheet_url)
     st.write("### Datos Demográficos y Socioeconómicos")
-    st.dataframe(df.style.set_properties(**{'background-color': '#FAFBF5'}))
+    st.dataframe(df.style.set_properties(**{'background-color': '#FAFBF5', 'color': 'black'}))
 except Exception as e:
     st.error(f"Error loading data from Google Sheets: {e}")
     st.stop()
