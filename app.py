@@ -90,7 +90,10 @@ shapefile_mapping = {
     "San Miguel Topilejo": "San Muiguel Topilejo.shp",
     "San Gregorio Atlapulco": "San Gregorio Atlapulco .shp",
     "San Andres Mixquic": "San Andrés Mixqui.shp",
-    "CTM Ixtahucan": "CTM Culhuacan.shp", # Best guess for CTM
+    "CTM Culhucan": "CTM Culhuacan.shp",
+    "La Selene": "Selene.shp",
+    "Pensil Sur": "Pensil Sur.shp",
+    "Pensil Norte": "Pensil Norte.shp",
 }
 
 T_PAZ_DIR = "."
