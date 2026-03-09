@@ -27,13 +27,13 @@ st.markdown('''
     </style>
 ''', unsafe_allow_html=True)
 
-csv_path = "territorios_de_paz.csv"
-if os.path.exists(csv_path):
-    df = pd.read_csv(csv_path)
+google_sheet_url = "https://docs.google.com/spreadsheets/d/1RdV79i1ifRCt_r3j8zEDqt71ItqNRO39MpB1fKA8uZY/export?format=csv&gid=0"
+try:
+    df = pd.read_csv(google_sheet_url)
     st.write("### Datos Demográficos y Socioeconómicos")
-    st.dataframe(df)
-else:
-    st.error("El archivo de datos territorios_de_paz.csv no se encuentra.")
+    st.dataframe(df.style.set_properties(**{'background-color': '#FAFBF5'}))
+except Exception as e:
+    st.error(f"Error loading data from Google Sheets: {e}")
     st.stop()
 
 st.write("### Mapa de Territorios de Paz")
