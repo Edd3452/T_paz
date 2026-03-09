@@ -63,8 +63,7 @@ if os.path.exists(mun_shp_path):
                 'weight': 1.5,
                 'fillOpacity': 0,
                 'dashArray': '5, 5'
-            },
-            tooltip="Límite Municipal"
+            }
         ).add_to(m)
     except Exception as e:
         print(f"Error loading 09mun.shp: {e}")
@@ -74,7 +73,7 @@ shapefile_mapping = {
     "Barrio norte": "Barrio norte.shp",
     "Lomas de Becerra": "Lomas becerra.shp",
     "San Pedro Xalpa": "San Pedro Xalpa.shp",
-    "Pedregal de Santo Domingo": "Pedregal de Santo Domingo.shp",
+    "Pedregal de Santo Domingo": None,  # Shapefile overlaps/is wrong, reverting to point
     "San Mateo Tlaltenango": "San Mateo Tlaltenango.shp",
     "Colonia Obrera": "Colonia Obrera.shp",
     "Colonia Morelos": "Colonia Morelos.shp",
