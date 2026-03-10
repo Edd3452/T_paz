@@ -40,7 +40,7 @@ with col1:
     st.write("### Datos Demográficos y Socioeconómicos")
     st.dataframe(df.style.set_properties(**{'background-color': '#FAFBF5', 'color': 'black'}), height=600)
 # Initialize Folium map
-m = folium.Map(location=[19.4326, -99.1332], zoom_start=10, tiles="CartoDB positron", control_scale=True)
+m = folium.Map(location=[19.4326, -99.1332], zoom_start=10, tiles="Territorios disponibles", control_scale=True)
 
 # Add 09mun base layer
 mun_shp_path = os.path.join(".", "09mun.shp")
@@ -134,7 +134,7 @@ for idx, row in df.iterrows():
             
             # Additional tooltip info from the spreadsheet
             tooltip_html = f"<b>{name}</b><br>"
-            for col in ["Acaldía", "Habitantes", "Edad", "Actividad Económica"]:
+            for col in ["Alcaldía", "Habitantes", "Edad", "Actividad Económica"]:
                 if pd.notna(row.get(col)):
                     tooltip_html += f"<b>{col}:</b> {row[col]}<br>"
             
