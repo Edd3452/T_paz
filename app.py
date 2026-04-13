@@ -4,6 +4,9 @@ import os
 import geopandas as gpd
 
 try:
+
+
+    
     import folium
     from streamlit_folium import st_folium
 except ImportError:
