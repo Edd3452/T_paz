@@ -99,6 +99,7 @@ shapefile_mapping = {
     "La Selene": "Selene.shp",
     "Pensil Sur": "Pensil.shp",
     "Pensil Norte": "Pensil.shp",
+    "Pensil": "Pensil.shp",
     "San Fransisico culhucána": "San Fransisco Culhucan.shp",
     "San Fransico Culhucána": "San Fransisco Culhucan.shp",
 }
@@ -134,6 +135,11 @@ for idx, row in df.iterrows():
     name = str(row["Territorio de paz"]).strip()
     shp_file = shapefile_mapping.get(name)
     
+    if not shp_file:
+        missing_from_map.append(f"{name} (No mapping found in shapefile_mapping dictionary)")
+    elif not os.path.exists(os.path.join(T_PAZ_DIR, shp_file)):
+        missing_from_map.append(f"{name} (File not found on disk: {shp_file})")
+        
     if shp_file and os.path.exists(os.path.join(T_PAZ_DIR, shp_file)):
         shp_path = os.path.join(T_PAZ_DIR, shp_file)
         gdf = load_and_process_shapefile(shp_path, mtime=os.path.getmtime(shp_path))
@@ -161,7 +167,6 @@ for idx, row in df.iterrows():
             except Exception as e:
                 st.error(f"Error adding {name} to map: {e}")
     else:
-        missing_from_map.append(name)
         # Fallback to lat/lon point if available and shapefile missing
         lat = row.get("latitud(y)")
         lon = row.get("longitud(x)")
