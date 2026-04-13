@@ -129,6 +129,7 @@ colors = [
 ]
 
 # Create a master dictionary linking df row to the shapefile
+missing_from_map = []
 for idx, row in df.iterrows():
     name = str(row["Territorio de paz"]).strip()
     shp_file = shapefile_mapping.get(name)
@@ -160,6 +161,7 @@ for idx, row in df.iterrows():
             except Exception as e:
                 st.error(f"Error adding {name} to map: {e}")
     else:
+        missing_from_map.append(name)
         # Fallback to lat/lon point if available and shapefile missing
         lat = row.get("latitud(y)")
         lon = row.get("longitud(x)")
@@ -183,6 +185,9 @@ folium.LayerControl().add_to(m)
 with col2:
     st.write("### Mapa de Territorios de Paz")
     st_folium(m, width="100%", height=600, returned_objects=[])
+
+if missing_from_map:
+    st.warning("⚠️ The following territories were missing shapefile mappings or local shapefiles, so they skipped the main drawing logic: " + ", ".join(missing_from_map))
 
 st.markdown(
     """
