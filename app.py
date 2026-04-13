@@ -94,7 +94,7 @@ shapefile_mapping = {
     "San Gregorio Atlapulco": "San Gregorio Atlapulco.shp",
     "San Andres Mixquic": "San Andres Mixqui.shp",
     "CTM Culhuacan": "CTM_Culhuacán_secII.shp",
-    "CTM Culhuacan Sec II": "CTM_Culhuacán_secII.shp",
+    "CTM Culhuacán Sec II": "CTM_Culhuacán_secII.shp",
     "La Selene": "Selene.shp",
     "Pensil Sur": "Pensil.shp",
     "Pensil Norte": "Pensil.shp",
