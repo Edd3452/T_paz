@@ -104,7 +104,7 @@ shapefile_mapping = {
     "San Fransico Culhucána": "San Fransisco Culhucan.shp",
 }
 
-T_PAZ_DIR = "."
+T_PAZ_DIR = r"c:\Users\ADMIN\Documents\T_paz"
 
 def load_and_process_shapefile(filepath, mtime=None):
     try:
