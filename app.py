@@ -99,6 +99,7 @@ shapefile_mapping = {
     "Pensil Sur": "Pensil.shp",
     "Pensil Norte": "Pensil.shp",
     "San Fransisico culhucána": "San Fransisco Culhucan.shp",
+    "San Fransico Culhucána": "San Fransisco Culhucan.shp",
 }
 
 T_PAZ_DIR = "."
