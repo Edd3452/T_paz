@@ -87,7 +87,7 @@ shapefile_mapping = {
     "Campamento 2 de Octubre": "Campamento 2 de octubre.shp",
     "San Felipe de Jesús": "San Felipe de Jésus.shp",
     "Chalma de Guadalupe": "Chalma de Guadalupe.shp",
-    "Infonavit Iztacalco": "Infonavit Iztacalco.shp",
+    "Infonavit Iztacalco": "Infonavit Iztacalco .shp",
     "Desarrollo Urbano Quetzalcóatl": "Desarrollo Urbano Quetzalcoat.shp",
     "Tierra Unida": "Tierra unida .shp",
     "Tacuba": "Tacuba.shp",
