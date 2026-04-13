@@ -89,7 +89,7 @@ shapefile_mapping = {
     "Desarrollo Urbano Quetzalcóatl": "Desarrollo Urbano Quetzalcoat.shp",
     "Tierra Unida": "Tierra unida .shp",
     "Tacuba": "Tacuba.shp",
-    "San Antonio Tecómitl": "San Antonio Tecomit.shp",
+    "San Antonio Tecómitl": "San Antonio Tecómitl.shp",
     "San Miguel Topilejo": "San Miguel Topilejo.shp",
     "San Gregorio Atlapulco": "San Gregorio Atlapulco.shp",
     "San Andres Mixquic": "San Andres Mixqui.shp",
