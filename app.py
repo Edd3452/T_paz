@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import os
+os.environ["SHAPE_RESTORE_SHX"] = "YES"
 import geopandas as gpd
 
 try:
