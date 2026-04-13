@@ -14,6 +14,7 @@ except ImportError:
     st.stop()
 
 st.set_page_config(layout="wide", page_title="Territorios de Paz")
+st.cache_data.clear()
 
 st.markdown("""
     <div style="background-color: #581845; padding: 20px; border-radius: 5px; margin-bottom: 20px;">
