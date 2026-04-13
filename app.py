@@ -105,7 +105,6 @@ shapefile_mapping = {
 
 T_PAZ_DIR = "."
 
-@st.cache_data
 def load_and_process_shapefile(filepath, mtime=None):
     try:
         gdf = gpd.read_file(filepath)
@@ -119,6 +118,7 @@ def load_and_process_shapefile(filepath, mtime=None):
             gdf = gdf.to_crs(epsg=4326)
         return gdf
     except Exception as e:
+        st.error(f"Error processing {filepath}: {e}")
         return None
 
 colors = [
@@ -145,17 +145,20 @@ for idx, row in df.iterrows():
                 if pd.notna(row.get(col)):
                     tooltip_html += f"<b>{col}:</b> {row[col]}<br>"
             
-            folium.GeoJson(
-                gdf,
-                name=name,
-                style_function=lambda x, color=layer_color: {
-                    'color': color,
-                    'weight': 2,
-                    'fillOpacity': 0.5,
-                    'fillColor': color
-                },
-                tooltip=tooltip_html
-            ).add_to(m)
+            try:
+                folium.GeoJson(
+                    gdf,
+                    name=name,
+                    style_function=lambda x, color=layer_color: {
+                        'color': color,
+                        'weight': 2,
+                        'fillOpacity': 0.5,
+                        'fillColor': color
+                    },
+                    tooltip=tooltip_html
+                ).add_to(m)
+            except Exception as e:
+                st.error(f"Error adding {name} to map: {e}")
     else:
         # Fallback to lat/lon point if available and shapefile missing
         lat = row.get("latitud(y)")
